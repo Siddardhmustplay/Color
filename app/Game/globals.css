@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.neon-text {
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #00e4ff,
+    0 0 20px #00e4ff,
+    0 0 40px #00e4ff;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global font and base reset */
+html, body {
+  @apply m-0 p-0 font-sans bg-black;
+}
+
+/* Font customization */
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #0a001a;
+}
+
+/* Neon glow effects */
+.neon-text {
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #00E4FF,
+    0 0 20px #00E4FF,
+    0 0 40px #00E4FF;
+}
+
+/* Smooth transitions for buttons and popups */
+.transition-glow {
+  @apply transition duration-200 ease-in-out;
+  box-shadow:
+    0 0 8px #FF6C00,
+    0 0 16px #FF6C00;
+}
+
+/* Color card glow for all boxes */
+.color-card {
+  @apply shadow-lg rounded-lg ring-2 ring-white ring-offset-2 hover:scale-110 transition-transform duration-200;
+}
+
+/* Glowing button style */
+.glow-button {
+  @apply bg-[#1f1b3a] border border-[#7D4AFF] text-white font-semibold px-4 py-2 rounded-xl shadow-md hover:bg-[#2c255b] hover:scale-105 transition-all duration-200;
+}
+
