@@ -286,21 +286,24 @@ function DraggableChip({
   onClick: () => void;
 }) {
   return (
-    <motion.div
-      draggable={placed ? false : true}
-      onDragStart={(e) => e.dataTransfer.setData("text/plain", color.name)}
-      onClick={onClick}
-      className={`flex items-center gap-2 rounded-2xl px-3 py-2 shadow ring-1 ring-black/5 ${
-        placed ? "opacity-50" : "cursor-grab active:cursor-grabbing"
-      } ${selected ? "ring-2 ring-slate-900" : ""}`}
-      style={{
-        backgroundColor: color.hex,
-        color: ["yellow", "white"].includes(color.name) ? "#111827" : "#fff",
-      }}
-      whileHover={{ scale: placed ? 1 : 1.06 }}
-      whileTap={{ scale: 0.94 }}
-      title={color.name}
-    >
+   <motion.div
+  draggable={!placed}
+  onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
+    e.dataTransfer.setData("text/plain", color.name);
+  }}
+  onClick={onClick}
+  className={`flex items-center gap-2 rounded-2xl px-3 py-2 shadow ring-1 ring-black/5 ${
+    placed ? "opacity-50" : "cursor-grab active:cursor-grabbing"
+  } ${selected ? "ring-2 ring-slate-900" : ""}`}
+  style={{
+    backgroundColor: color.hex,
+    color: ["yellow", "white"].includes(color.name) ? "#111827" : "#fff",
+  }}
+  whileHover={{ scale: placed ? 1 : 1.06 }}
+  whileTap={{ scale: 0.94 }}
+  title={color.name}
+>
+
       <span className="text-lg">🎨</span>
       <span className="capitalize">{color.name}</span>
       {placed && <span className="text-xs opacity-80">→ {placed}</span>}
