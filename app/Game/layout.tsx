@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <head />
-      <body className="bg-gradient-to-br from-[#11002a] via-[#1c013f] to-[#0a001a] text-white font-sans">
+      <body className="text-white font-sans">
         <nav className="w-full px-6 py-4 bg-[#1b0033] text-center text-xl font-bold text-[#FF6C00] shadow-md border-b border-[#7D4AFF] space-x-6">
           <Link href="/emoji-frequency" className="hover:underline">🧠 Color Frequency</Link>
           <Link href="/emoji-duplicator" className="hover:underline">🌀 Color Duplicator</Link>
