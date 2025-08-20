@@ -9,9 +9,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href="/emoji-frequency" className="hover:underline">Color Frequency</Link>
           <Link href="/emoji-duplicator" className="hover:underline">Color Duplicator</Link>
           <Link href="/scroll-catcher" className="hover:underline">Color Catcher</Link>
-          <Link href="/color-memory" className="hover:underline">Color Matcher</Link>
-          <Link href="/color-rush" className="hover:underline">Color Rush</Link>
-          <Link href="/color-command" className="hover:underline">Color Command</Link>
+          <Link href="/Color-memory" className="hover:underline">Color Matcher</Link>
+          <Link href="/Color-rush" className="hover:underline">Color Rush</Link>
+          <Link href="/Color-command" className="hover:underline">Color Command</Link>
           <Link href="/fading-cleaner" className="hover:underline">Color Cleaner</Link>
           <Link href="/color-count" className="hover:underline">Color Count</Link>
           <Link href="/color-arithmetic" className="hover:underline">Color Arithmetic</Link>
