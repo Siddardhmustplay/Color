@@ -93,7 +93,7 @@ export default function ColorMatcherPage() {
     <div className={styles.container}>
       {/* ✅ Card wrapper with blur effect */}
       <section className="mx-auto max-w-3xl rounded-2xl bg-white/85 backdrop-blur p-6 shadow-xl">
-        <h1 className={styles.title}>🎨 Color Matcher Game</h1>
+        <h1 className={styles.title}>Color Matcher Game</h1>
         <div className={styles.grid}>
           {tiles.map((tile, index) => (
             <div
