@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 const COLORS = [
-  '#FF6C00', '#00FFB3', '#FF003C', '#7D4AFF', '#00E4FF', '#FFEA00', '#00FF66', '#FF66CC'
+  '#FF6C00', '#00FFB3', '#FF003C', '#7D4AFF',
+  '#00E4FF', '#FFEA00', '#00FF66', '#FF66CC'
 ];
 
 function shuffle(array: string[]): string[] {
   let currentIndex = array.length, randomIndex;
-
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -17,7 +17,6 @@ function shuffle(array: string[]): string[] {
       array[randomIndex], array[currentIndex],
     ];
   }
-
   return array;
 }
 
@@ -51,7 +50,6 @@ export default function ColorMatcherPage() {
 
   useEffect(() => {
     if (matched.length === COLORS.length * 2) {
-      // Delay reset to let user see the last match
       setTimeout(() => {
         initializeTiles();
       }, 1500);
@@ -93,20 +91,23 @@ export default function ColorMatcherPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>🎨 Color Matcher Game</h1>
-      <div className={styles.grid}>
-        {tiles.map((tile, index) => (
-          <div
-            key={tile.id}
-            className={styles.card}
-            onClick={() => handleClick(index)}
-            style={{
-              backgroundColor: tile.flipped || tile.matched ? tile.color : 'gray',
-              cursor: tile.flipped || tile.matched ? 'default' : 'pointer',
-            }}
-          />
-        ))}
-      </div>
+      {/* ✅ Card wrapper with blur effect */}
+      <section className="mx-auto max-w-3xl rounded-2xl bg-white/85 backdrop-blur p-6 shadow-xl">
+        <h1 className={styles.title}>🎨 Color Matcher Game</h1>
+        <div className={styles.grid}>
+          {tiles.map((tile, index) => (
+            <div
+              key={tile.id}
+              className={styles.card}
+              onClick={() => handleClick(index)}
+              style={{
+                backgroundColor: tile.flipped || tile.matched ? tile.color : 'gray',
+                cursor: tile.flipped || tile.matched ? 'default' : 'pointer',
+              }}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
