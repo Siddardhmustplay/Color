@@ -40,33 +40,37 @@ export default function FadingColorCleaner() {
 
   // Remove faded blobs + reduce lives
   useEffect(() => {
-    const check = setInterval(() => {
-      const now = Date.now();
-      setBlobs(prev => {
-        const stillVisible: Blob[] = [];
-        let missed = 0;
-        for (const blob of prev) {
-          if (now - blob.createdAt > FADE_DURATION) {
+  const check = setInterval(() => {
+    const now = Date.now();
+    setBlobs(prev => {
+      const stillVisible: Blob[] = [];
+      let missed = 0;
+
+      for (const blob of prev) {
+        if (now - blob.createdAt > FADE_DURATION) {
+          // ❌ Only red blobs reduce lives
+          if (blob.color === 'red') {
             missed++;
-          } else {
-            stillVisible.push(blob);
           }
+        } else {
+          stillVisible.push(blob);
         }
+      }
 
-        if (missed > 0) {
-          setLives(l => {
-            const newLives = l - missed;
-            if (newLives <= 0) setGameOver(true);
-            return newLives;
-          });
-        }
+      if (missed > 0) {
+        setLives(l => {
+          const newLives = l - missed;
+          if (newLives <= 0) setGameOver(true);
+          return newLives;
+        });
+      }
 
-        return stillVisible;
-      });
-    }, 500);
+      return stillVisible;
+    });
+  }, 500);
 
-    return () => clearInterval(check);
-  }, []);
+  return () => clearInterval(check);
+}, []);
 
   const handleClick = (id: number) => {
     setBlobs(prev => prev.filter(b => b.id !== id));
